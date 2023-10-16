@@ -1,0 +1,2 @@
+# Pyhton
+ Python. Álgebra. OCR. 
