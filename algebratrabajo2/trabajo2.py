@@ -16,7 +16,8 @@ GrafoNuevo.add_edges_from(aristasGrafo)
 
 # Devuelve la mejor particion en un listado o diccionario:
 mejorParticion = community_louvain.best_partition(GrafoNuevo)
-
+# Devuelve la Modularidad 
+modularidadMejorParticion = community_louvain.modularity(mejorParticion, GrafoNuevo)
 # Visualizamos los datos
 posicion  = nx.spring_layout(GrafoNuevo)
 cmap = graficoacolor.get_cmap('viridis', max(mejorParticion.values()) + 1) 
@@ -26,4 +27,5 @@ nx.draw_networkx_nodes(GrafoNuevo, posicion, mejorParticion.keys(), node_size=10
 nx.draw_networkx_edges(GrafoNuevo, posicion, alpha=0.5) 
 grafico.title('Particiones Usando el algoritmo de Louvain')
 
+grafico.text(0.1, 0.5, 'Modularidad : '+ str(modularidadMejorParticion), fontsize=8)
 grafico.show()
